@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="button-container">
-        <button type="button" (click)="addCar()">Add Car</button>
+        <button class="blue-btn" (click)="addCar()">Add Car</button>
       </div>
     </div>
     <h6 style="color: red">{{ errorMessage }}</h6>
@@ -61,8 +61,7 @@
       (input)="filterCars(filterString)"
       style="margin-left:50px ;width: 250px"
     />
-    <button type="button" (click)="resetFilter()"
-    style="width: fit-content">Reset</button>
+    <button (click)="resetFilter()" class="blue-btn">Reset</button>
   </div>
   <div class="car-container">
     <div class="car-box" *ngFor="let car of filteredCars">
@@ -72,17 +71,16 @@
         <div>ID: {{ car.id }}</div>
       </div>
       <div class="button-row">
-        <button class="delete-btn" (click)="deleteCar(car.id)">
+        <button class="red-btn" (click)="deleteCar(car.id)">
           <i class="fas fa-trash-alt"></i> Delete
         </button>
-        <button class="edit-btn" (click)="openEditModal(car)">
+        <button class="blue-btn" (click)="openEditModal(car)">
           <i class="fas fa-edit"></i> Edit
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Edit Modal -->
   <div
     class="modal"
     *ngIf="isModalOpen"
@@ -130,15 +128,14 @@
         </div>
 
         <div class="button-row">
-          <button
-            type="button"
+          <button class="red-btn"
             (click)="closeModal($event)"
             (keydown)="onKeyDown($event)"
             tabindex="2"
           >
             Cancel
           </button>
-          <button type="submit" (keydown)="onKeyDown($event)" tabindex="0">
+          <button class="blue-btn" (keydown)="onKeyDown($event)" tabindex="0">
             Save
           </button>
         </div>

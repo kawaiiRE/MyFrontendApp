@@ -17,7 +17,7 @@ export class CarService {
   ) {}
 
   getCars (): Observable<Car[]> {
-    console.log('getting cars')
+    // console.log('getting cars')
 
     if (isPlatformBrowser(this.platformId)) {
       const headers = new HttpHeaders({
@@ -28,41 +28,38 @@ export class CarService {
 
       return this.http.get<Car[]>(this.apiUrl, { headers }).pipe(
         catchError(error => {
-          console.error('Error fetching cars:', error)
+          console.error('error fetching cars:', error)
           throw error
         })
       )
     } else {
-      console.log('SSR: HTTP request not executed')
-      // Return an empty observable or dummy data when in SSR context
-      
+      console.log('error')
+    
       return of([])
     }
   }
 
   addCar (car: Car): Observable<Car> {
-    console.log('adding car')
+    // console.log('adding car')
 
     if (isPlatformBrowser(this.platformId)) {
       return this.http.post<Car>(this.apiUrl, car).pipe(
         catchError(error => {
-          console.error('Error adding car:', error)
-          throw error // Log the error
+          console.error('error adding car:', error)
+          throw error
         })
       )
     } else {
-      console.log('SSR: HTTP request not executed')
+      console.log('error')
       
-      return of({} as Car) // Prevent post on server side
+      return of({} as Car)
     }
   }
 
-  // Update a car by ID
   updateCar(car: Car): Observable<Car> {
     return this.http.put<Car>(`${this.apiUrl}/${car.id}`, car);
   }
 
-  // Delete a car by ID (soft delete)
   deleteCar(id: number): Observable<void> {
     return this.http.patch<void>(`${this.apiUrl}/${id}`, { hidden: true });
   }

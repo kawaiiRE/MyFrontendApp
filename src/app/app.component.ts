@@ -13,8 +13,6 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   title = 'angular-routing';
-  footerUrl = 'https://www.ganatan.com';
-  footerLink = 'www.ganatan.com';
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
