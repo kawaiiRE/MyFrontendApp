@@ -1,0 +1,256 @@
+/* Main container to hold the car boxes */
+.car-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between the car boxes */
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+/* Style for each car box */
+.car-box {
+  width: 30%;
+  min-width: 280px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+/* Add hover effect to car boxes */
+.car-box:hover {
+  transform: translateY(-10px);
+}
+
+/* Title of the car */
+.car-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Details section (year and id) */
+.car-details {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #555;
+}
+
+.edit-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Hover effects for buttons */
+.edit-btn:hover {
+  background-color: #45a049;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+}
+
+/* Optional: Icon styling (requires Font Awesome or similar) */
+.fas {
+  margin-right: 5px;
+}
+
+/* Modal Background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Opacity effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal h2 {
+  text-align: center;
+}
+
+/* Action buttons inside modal */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type='submit'] {
+  background-color: #4caf50;
+  color: white;
+}
+
+button[type='button'] {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Styling for car actions buttons */
+.edit-btn,
+.delete-btn {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+  width: 100%;
+  padding-top: 15px;
+}
+
+.button-row button {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-container-main {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: flex-start;
+  background-color: lightgray;
+  padding: 25px;
+  position: relative;
+  margin-bottom: 5%;
+  border-radius: 10px;
+}
+
+.form-container-add {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 50%;
+  margin-left: 10%;
+  /* margin: 0 auto; */
+  /* background-color:blue */
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  /* align-items: center; */
+  /* background-color: red; */
+  /* width: 50%; */
+  /* height: 100%; */
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.add-car-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.add-car-btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-car-btn:hover {
+  background-color: #0056b3;
+}
+
+.add-car-btn:active {
+  background-color: #004085;
+}

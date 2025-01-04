@@ -1,0 +1,148 @@
+<div class="container py-5">
+  <!-- <p>Count: {{ count }}</p>
+  <button
+    class="btn btn-info mt-2"
+    type="button"
+    (click)="fun()"
+    (mouseDown)="fun()"
+  >
+    Click me!
+  </button> -->
+  <form (ngSubmit)="addCar()">
+    <div class="form-container-main">
+      <div class="form-container-add">
+        <div class="form-group">
+          <label for="brand">Brand:</label>
+          <input
+            type="text"
+            [(ngModel)]="newCar.brand"
+            name="brand"
+            required
+            placeholder="Brand"
+          />
+        </div>
+        <div class="form-group">
+          <label for="model">Model:</label>
+          <input
+            type="text"
+            [(ngModel)]="newCar.model"
+            name="model"
+            required
+            placeholder="Model"
+          />
+        </div>
+        <div class="form-group">
+          <label for="year">Year:</label>
+          <input
+            type="number"
+            [ngModel]="newCar.year || ''"
+            (ngModelChange)="newCar.year = $event ? +$event : 0"
+            name="year"
+            required
+            placeholder="Year"
+          />
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="button" (click)="addCar()">Add Car</button>
+      </div>
+    </div>
+    <h6 style="color: red">{{ errorMessage }}</h6>
+  </form>
+
+  <div class="row">
+    <h1
+    style="width: fit-content">Car List ({{ carsLen }})</h1>
+    <input
+      type="text"
+      [(ngModel)]="filterString"
+      name="filterString"
+      placeholder="Filter cars"
+      (input)="filterCars(filterString)"
+      style="margin-left:50px ;width: 250px"
+    />
+    <button type="button" (click)="resetFilter()"
+    style="width: fit-content">Reset</button>
+  </div>
+  <div class="car-container">
+    <div class="car-box" *ngFor="let car of filteredCars">
+      <div class="car-title">{{ car.brand }} {{ car.model }}</div>
+      <div class="car-details">
+        <div>Year: {{ car.year }}</div>
+        <div>ID: {{ car.id }}</div>
+      </div>
+      <div class="button-row">
+        <button class="delete-btn" (click)="deleteCar(car.id)">
+          <i class="fas fa-trash-alt"></i> Delete
+        </button>
+        <button class="edit-btn" (click)="openEditModal(car)">
+          <i class="fas fa-edit"></i> Edit
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div
+    class="modal"
+    *ngIf="isModalOpen"
+    (click)="closeModal($event)"
+    (keydown)="onKeyDown($event)"
+    tabindex="0"
+  >
+    <div
+      class="modal-content"
+      (click)="stopPropagation($event)"
+      (keydown)="onKeyDown($event)"
+      tabindex="1"
+    >
+      <h2>Edit Car</h2>
+      <form (ngSubmit)="updateCar()">
+        <div class="form-container">
+          <div class="form-group">
+            <label for="brand">Brand:</label>
+            <input
+              id="brand"
+              [(ngModel)]="selectedCar.brand"
+              name="brand"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="model">Model:</label>
+            <input
+              id="model"
+              [(ngModel)]="selectedCar.model"
+              name="model"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="year">Year:</label>
+            <input
+              id="year"
+              [ngModel]="selectedCar.year || ''"
+              (ngModelChange)="selectedCar.year = $event ? +$event : 0"
+              name="year"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button
+            type="button"
+            (click)="closeModal($event)"
+            (keydown)="onKeyDown($event)"
+            tabindex="2"
+          >
+            Cancel
+          </button>
+          <button type="submit" (keydown)="onKeyDown($event)" tabindex="0">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
